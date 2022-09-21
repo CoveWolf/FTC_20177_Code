@@ -50,8 +50,11 @@ public class DriveCode extends LinearOpMode {
     private DcMotor frontrightMotor;
     private DcMotor backleftMotor;
     private DcMotor backrightMotor;
+    private Servo claw;
     private Blinker control_Hub;
     private Gyroscope imu;
+
+    double clawupdate;
 
 
     @Override
@@ -61,6 +64,7 @@ public class DriveCode extends LinearOpMode {
         frontrightMotor = hardwareMap.get(DcMotor.class, "frontrightMotor");
         backleftMotor = hardwareMap.get(DcMotor.class, "backleftMotor");
         backrightMotor = hardwareMap.get(DcMotor.class, "backrightMotor");
+        claw = hardwareMap.get(Servo.class, "claw");
         control_Hub = hardwareMap.get(Blinker.class, "Control Hub");
         imu = hardwareMap.get(Gyroscope.class, "imu");
         double tgtPower = 0;
@@ -77,13 +81,13 @@ public class DriveCode extends LinearOpMode {
 
 
 
-            double r  = Math.hypot(-gamepad1.left_stick_x, gamepad1.left_stick_y);
+            double r = Math.hypot(-gamepad1.left_stick_x, gamepad1.left_stick_y);
             double robotAngle = Math.atan2(gamepad1.left_stick_y, -gamepad1.left_stick_x) - Math.PI / 4;
-            double rightx = gamepad1.right_stick_x*.45;
-            double v1 = (r * Math.cos(robotAngle))*.75 - rightx;
-            double v2 = (r * Math.sin(robotAngle))*.75 + rightx;
-            double v3 = (r * Math.sin(robotAngle))*.75 - rightx;
-            double v4 = (r * Math.cos(robotAngle))*.75 + rightx;
+            double rightx = gamepad1.right_stick_x * .45;
+            double v1 = (r * Math.cos(robotAngle)) * .75 - rightx;
+            double v2 = (r * Math.sin(robotAngle)) * .75 + rightx;
+            double v3 = (r * Math.sin(robotAngle)) * .75 - rightx;
+            double v4 = (r * Math.cos(robotAngle)) * .75 + rightx;
 //these had 'final' before them at one point "final double v1 = r * Math.cos(robotangle) + rightx"
 //-Team 15036
 //Set drive speed
@@ -92,12 +96,25 @@ public class DriveCode extends LinearOpMode {
             backleftMotor.setPower(v3);
             backrightMotor.setPower(-v4);
 
-//END OF CODE
+
+            clawupdate = claw.getPosition();
+            telemetry.addData("clawupdate",clawupdate);
+
+            //END OF CODE
 
         }
 
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 
