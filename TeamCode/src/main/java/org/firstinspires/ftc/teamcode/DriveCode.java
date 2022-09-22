@@ -87,19 +87,15 @@ public class DriveCode extends LinearOpMode {
             double v1 = (r * Math.cos(robotAngle)) * .75 - rightx;
             double v2 = (r * Math.sin(robotAngle)) * .75 + rightx;
             double v3 = (r * Math.sin(robotAngle)) * .75 - rightx;
-            double v4 = (r * Math.cos(robotAngle)) * .75 + rightx;
-//these had 'final' before them at one point "final double v1 = r * Math.cos(robotangle) + rightx"
-//-Team 15036
-//Set drive speed
+              double v4 = (r * Math.cos(robotAngle)) * .75 + rightx;
+            //these had 'final' before them at one point "final double v1 = r * Math.cos(robotangle) + rightx"
+            //-Team 15036
+            //Set drive speed
+
             frontleftMotor.setPower(v1);
             frontrightMotor.setPower(-v2);
             backleftMotor.setPower(v3);
             backrightMotor.setPower(-v4);
-
-
-            clawupdate = claw.getPosition();
-            telemetry.addData("clawupdate",clawupdate);
-
             //END OF CODE
 
         }
