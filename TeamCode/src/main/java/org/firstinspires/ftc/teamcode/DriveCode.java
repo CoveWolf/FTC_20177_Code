@@ -80,14 +80,13 @@ public class DriveCode extends LinearOpMode {
             telemetry.update();
 
 
-
             double r = Math.hypot(-gamepad1.left_stick_x, gamepad1.left_stick_y);
             double robotAngle = Math.atan2(gamepad1.left_stick_y, -gamepad1.left_stick_x) - Math.PI / 4;
             double rightx = gamepad1.right_stick_x * .45;
             double v1 = (r * Math.cos(robotAngle)) * .75 - rightx;
             double v2 = (r * Math.sin(robotAngle)) * .75 + rightx;
             double v3 = (r * Math.sin(robotAngle)) * .75 - rightx;
-              double v4 = (r * Math.cos(robotAngle)) * .75 + rightx;
+            double v4 = (r * Math.cos(robotAngle)) * .75 + rightx;
             //these had 'final' before them at one point "final double v1 = r * Math.cos(robotangle) + rightx"
             //-Team 15036
             //Set drive speed
@@ -96,11 +95,22 @@ public class DriveCode extends LinearOpMode {
             frontrightMotor.setPower(-v2);
             backleftMotor.setPower(v3);
             backrightMotor.setPower(-v4);
-            //END OF CODE
+
+            if (gamepad1.a){
+                claw.setPosition(-27);
+            }else {
+                if (gamepad1.b){
+                    claw.setPosition(-5);
+            }else{
+                }
+
+                //END OF CODE
+
+            }
 
         }
-
     }
+
 }
 
 
