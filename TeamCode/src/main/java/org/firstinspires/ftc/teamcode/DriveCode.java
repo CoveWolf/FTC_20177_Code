@@ -97,7 +97,7 @@ public class DriveCode extends LinearOpMode {
             backrightMotor.setPower(-v4);
 
             if (gamepad1.a){
-                claw.setPosition(.6);
+                claw.setPosition(.65);
             }else {
                 if (gamepad1.b){
                     claw.setPosition(.8);
